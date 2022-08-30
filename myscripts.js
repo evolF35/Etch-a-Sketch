@@ -1,6 +1,4 @@
-const gridsize = 10;
-
-
+let gridsize = 10;
 const container = document.querySelector('#Box');
 
 let scaler = 0;
@@ -10,18 +8,18 @@ function opacity(gridsize){
     max *= (1/gridsize);
     return(max);
 }
-
 scaler = opacity(gridsize);
 
-
-for(let i = 0; i < gridsize; i++){
+function Row(gridsize) {
+    for(let i = 0; i < gridsize; i++){
     const zapatos = document.createElement("div");
     zapatos.setAttribute('id','Row');
     zapatos.style.display = "flex";
     zapatos.style.width = '960px';
-    zapatos.style.height = '480px';
+    zapatos.style.height = '960px';
     block(zapatos);
     container.appendChild(zapatos);
+}
 }
 
 function block(zapatos) { 
@@ -36,10 +34,22 @@ function block(zapatos) {
     }
 };
 
+Row(gridsize);
 
+const chooseButton = document.querySelector('#chooseSize');
 
+chooseButton.addEventListener('click',() =>{
+    const boxes = document.querySelectorAll('#Row');
+1
+    boxes.forEach(box => {
+      box.remove();
+    });
 
-
+    let size = prompt("Input a number between 1-100");
+    gridsize = size;
+    scaler = opacity(gridsize);
+    Row(gridsize);
+});
 
 
 
